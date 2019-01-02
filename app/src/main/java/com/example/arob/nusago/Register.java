@@ -3,7 +3,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.view.View;
-import android.content.Intent;
 
 
 
@@ -25,7 +24,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
-
+//
 //        Button mButton = (Button) findViewById(R.id.selanjutnya);
 //        mButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
