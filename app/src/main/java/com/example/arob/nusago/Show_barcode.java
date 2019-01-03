@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class Show_barcode extends BottomSheetDialogFragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

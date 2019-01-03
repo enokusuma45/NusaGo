@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_gravity="bottom"
     app:behavior_hideable="false"
-    app:behavior_peekHeight="200dp"
+    app:behavior_peekHeight="80dp"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
     android:background="@drawable/gradient_nusago"
     android:padding="6dp">

@@ -9,15 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register">
+        <activity android:name=".Register"
+            android:theme="@style/AppTheme.TransparentTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".FragmentBottomSheetDialogFull" />
-        <activity android:name=".Otp" />
+        <activity android:name=".Otp"
+            android:theme="@style/AppTheme.TransparentTheme"/>
         <activity android:name=".Home" />
         <activity android:name=".History" />
         <activity android:name=".Totalharga_popup"></activity>
