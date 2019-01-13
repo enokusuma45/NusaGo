@@ -51,12 +51,22 @@
 
     </RelativeLayout>
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="-15dp"
+        app:buttonTint="@color/colorPrimaryLight"
+        android:text="Anda Setuju" />
+
     <Button
         android:id="@+id/Otp"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:layout_marginLeft="-4dp"
-        android:layout_marginRight="-4dp"
+        android:layout_marginLeft="-6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="-6dp"
         android:background="@drawable/btn_nusago"
         android:text="Daftar Sekarang"
         android:textAllCaps="false"
