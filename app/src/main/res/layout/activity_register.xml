@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="10"
-        android:baselineAligned="false">
+        android:background="@android:color/white">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="210dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="-5dp"
-            android:src="@drawable/bg_register" />
+    <ImageView
+            android:id="@+id/imgRegisterBackground"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_register"/>
 
-
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
             android:layout_centerInParent="true"
-            android:layout_marginTop="220dp"
-            android:orientation="vertical"
-            android:padding="@dimen/spacing_large">
+            android:layout_below="@id/imgRegisterBackground"
+            android:orientation="vertical">
 
-            <TextView
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
@@ -37,19 +30,20 @@
                 android:textColor="#757575"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:typeface="normal" />
+                android:typeface="normal"/>
 
 
-            <TextView
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="Masukan Nomor KTP"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="@color/blue_grey_800" />
+                android:textColor="@color/blue_grey_800"/>
 
-            <android.support.design.widget.TextInputEditText
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtKtp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/no_ktp"
@@ -61,22 +55,23 @@
                 android:singleLine="true"
                 android:textColor="#424242"
                 android:textSize="13sp"
-                android:theme="@style/EditText.Grey" />
+                android:theme="@style/EditText.Grey"/>
 
-            <View
+        <View
                 android:layout_width="0dp"
-                android:layout_height="@dimen/spacing_mlarge" />
+                android:layout_height="@dimen/spacing_mlarge"/>
 
-            <TextView
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="Masukan Nomor handphone"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="@color/blue_grey_800" />
+                android:textColor="@color/blue_grey_800"/>
 
-            <android.support.design.widget.TextInputEditText
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/no_hp"
@@ -88,18 +83,18 @@
                 android:singleLine="true"
                 android:textColor="#424242"
                 android:textSize="13sp"
-                android:theme="@style/EditText.Grey" />
+                android:theme="@style/EditText.Grey"/>
 
-            <View
+        <View
                 android:layout_width="0dp"
-                android:layout_height="@dimen/spacing_middle" />
+                android:layout_height="@dimen/spacing_middle"/>
 
-            <View
+        <View
                 android:layout_width="0dp"
-                android:layout_height="@dimen/spacing_large" />
+                android:layout_height="@dimen/spacing_large"/>
 
-            <Button
-                android:id="@+id/selanjutnya"
+        <Button
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginLeft="-4dp"
@@ -108,29 +103,28 @@
                 android:text="Selanjutnya"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
-            <View
+        <View
                 android:layout_width="0dp"
-                android:layout_height="@dimen/spacing_medium" />
+                android:layout_height="@dimen/spacing_medium"/>
 
-            <LinearLayout
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_medium"
                 android:gravity="center"
                 android:orientation="horizontal">
 
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="@dimen/spacing_xlarge" />
-
         </LinearLayout>
 
-    </RelativeLayout>
+        <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/spacing_xlarge"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
 
 
 
-</LinearLayout>

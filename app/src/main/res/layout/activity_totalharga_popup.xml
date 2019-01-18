@@ -9,7 +9,7 @@
     app:behavior_hideable="false"
     app:behavior_peekHeight="80dp"
     android:padding="6dp"
-    tools:context="com.example.arob.nusago.Totalharga_popup">
+    tools:context="com.example.arob.nusago..Totalharga_popup">
 
 
     <ImageView
