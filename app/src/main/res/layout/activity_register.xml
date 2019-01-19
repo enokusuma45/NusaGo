@@ -16,50 +16,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_centerInParent="true"
             android:layout_below="@id/imgRegisterBackground"
             android:orientation="vertical">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:paddingBottom="20dp"
-                android:text="Pendaftaran"
-                android:textColor="#757575"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:typeface="normal"/>
+        <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:fontFamily="sans-serif"-->
+                <!--android:paddingBottom="20dp"-->
+                <!--android:text="Pendaftaran"-->
+                <!--android:textColor="#757575"-->
+                <!--android:textSize="24sp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:typeface="normal"/>-->
 
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Masukan Nomor KTP"
-                android:textAlignment="center"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="@color/blue_grey_800"/>
-
-        <android.support.design.widget.TextInputEditText
-                android:id="@+id/txtKtp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/no_ktp"
-                android:hint="Nomor KTP"
-                android:inputType="number"
-                android:maxLength="16"
-                android:maxLines="1"
-                android:paddingLeft="75dp"
-                android:singleLine="true"
-                android:textColor="#424242"
-                android:textSize="13sp"
-                android:theme="@style/EditText.Grey"/>
-
-        <View
-                android:layout_width="0dp"
-                android:layout_height="@dimen/spacing_mlarge"/>
 
         <TextView
                 android:layout_width="wrap_content"

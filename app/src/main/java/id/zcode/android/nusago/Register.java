@@ -1,25 +1,29 @@
 package id.zcode.android.nusago;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import id.zcode.android.nusago.component.ZActivity;
+import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.User;
+import id.zcode.android.nusago.util.APIUtils;
 import id.zcode.android.nusago.util.Helper;
 import id.zcode.android.nusago.util.PrefManager;
+import retrofit2.Call;
+import retrofit2.Response;
 
 
-public class Register extends AppCompatActivity {
+public class Register extends ZActivity {
 
-    private TextInputEditText txtKtp, txtPhone;
+    private TextInputEditText txtPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        txtKtp = findViewById(R.id.txtKtp);
         txtPhone = findViewById(R.id.txtPhone);
 
         Button btnRegister = findViewById(R.id.btnRegister);
@@ -32,23 +36,23 @@ public class Register extends AppCompatActivity {
     }
 
     private void showTNC() {
-        String ktp = txtKtp.getText().toString();
         String phone = txtPhone.getText().toString();
-        final View view = findViewById(android.R.id.content);
-        if (ktp.isEmpty()) {
-            Helper.showMessage(view, "KTP harus diisi");
-            return;
-        }
         if (phone.isEmpty()) {
-            Helper.showMessage(view, "Nomor Handphone harus diisi");
+            Helper.showMessage("Nomor Handphone harus diisi");
             return;
         }
-        User user = new User();
-        user.setKtp(ktp);
-        user.setPhone(phone);
-        PrefManager.getInstance(this).putCustom("user", user);
-        TNC tnc = new TNC();
-        tnc.show(getSupportFragmentManager(), "tnc");
+        APIUtils.getInstance(this).getUserService().checkPhone(phone).enqueue(new ZCallback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.code() == 200) {
+                    PrefManager.getInstance(Register.this).putCustom("user", response.body());
+                    startActivity(new Intent(Register.this, Otp.class));
+                } else {
+                    TNC tnc = new TNC();
+                    tnc.show(getSupportFragmentManager(), "tnc");
+                }
+            }
+        });
     }
 }
 
