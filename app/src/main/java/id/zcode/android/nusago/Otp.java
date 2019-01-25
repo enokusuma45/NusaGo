@@ -11,6 +11,7 @@ import id.zcode.android.nusago.component.ZActivity;
 import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
+import id.zcode.android.nusago.util.AppConstant;
 import id.zcode.android.nusago.util.Helper;
 import id.zcode.android.nusago.util.PrefManager;
 import retrofit2.Call;
@@ -41,7 +42,7 @@ public class Otp extends ZActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
-        user = PrefManager.getInstance(this).getCustom("user", User.class);
+        user = PrefManager.getInstance(this).getCustom(AppConstant.SP_USER, User.class);
 
         initx();
 
@@ -112,10 +113,12 @@ public class Otp extends ZActivity {
         map.put("id", user.getId());
         map.put("code", sb.toString());
         APIUtils.getInstance(this).getUserService()
-                .activation(map).enqueue(new ZCallback<Void>() {
+                .activation(map).enqueue(new ZCallback<String>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 if (response.code() == 200) {
+                    String token = response.body();
+                    PrefManager.getInstance(Otp.this).putString(AppConstant.SP_TOKEN, token);
                     startActivity(new Intent(Otp.this, Home.class));
                 }
             }

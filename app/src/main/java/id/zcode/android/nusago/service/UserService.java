@@ -13,7 +13,7 @@ public interface UserService {
     Call<User> register(@Body User user);
 
     @POST("activation")
-    Call<Void> activation(@Body Map map);
+    Call<String> activation(@Body Map map);
 
     @POST("resend-verification-code/{id}")
     Call<Void> resendVerificationCode(@Path("id") String userId);

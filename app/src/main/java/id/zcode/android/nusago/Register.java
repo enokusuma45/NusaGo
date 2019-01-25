@@ -9,6 +9,7 @@ import id.zcode.android.nusago.component.ZActivity;
 import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
+import id.zcode.android.nusago.util.AppConstant;
 import id.zcode.android.nusago.util.Helper;
 import id.zcode.android.nusago.util.PrefManager;
 import retrofit2.Call;
@@ -23,9 +24,13 @@ public class Register extends ZActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        String token = PrefManager.getInstance(this).getString(AppConstant.SP_TOKEN, "");
+        if (token.length() > 0) {
+            startActivity(new Intent(Register.this, Home.class));
+            finish();
+            return;
+        }
         txtPhone = findViewById(R.id.txtPhone);
-
         Button btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +50,7 @@ public class Register extends ZActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {
-                    PrefManager.getInstance(Register.this).putCustom("user", response.body());
+                    PrefManager.getInstance(Register.this).putCustom(AppConstant.SP_USER, response.body());
                     startActivity(new Intent(Register.this, Otp.class));
                 } else {
                     TNC tnc = new TNC();

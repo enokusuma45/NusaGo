@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import id.zcode.android.nusago.model.User;
+import id.zcode.android.nusago.util.AppConstant;
+import id.zcode.android.nusago.util.PrefManager;
 
 
 public class Home extends AppCompatActivity {
@@ -13,6 +17,8 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        initValue();
 
         Button buttonOpenBottomSheet = findViewById(R.id.ShowBarcode);
         buttonOpenBottomSheet.setOnClickListener(new View.OnClickListener() {
@@ -24,7 +30,7 @@ public class Home extends AppCompatActivity {
         });
 
 
-        Button mButton = (Button) findViewById(R.id.History);
+        Button mButton = findViewById(R.id.History);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,6 +39,13 @@ public class Home extends AppCompatActivity {
         });
 
 
+    }
+
+    private void initValue() {
+        TextView name = findViewById(R.id.txtName),
+                saldo = findViewById(R.id.txtSaldo);
+        User user = PrefManager.getInstance(Home.this).getCustom(AppConstant.SP_USER, User.class);
+        name.setText(user.getName());
     }
 
 

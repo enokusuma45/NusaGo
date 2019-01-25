@@ -16,10 +16,6 @@ public class Totalharga_popup extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_totalharga_popup, container, true);
-
         return v;
-
-
-
     }
 }

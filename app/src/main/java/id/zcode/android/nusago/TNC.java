@@ -12,6 +12,7 @@ import android.widget.Button;
 import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
+import id.zcode.android.nusago.util.AppConstant;
 import id.zcode.android.nusago.util.PrefManager;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -33,14 +34,14 @@ public class TNC extends BottomSheetDialogFragment {
     }
 
     private void register() {
-        final User user = PrefManager.getInstance(getActivity()).getCustom("user", User.class);
+        final User user = PrefManager.getInstance(getActivity()).getCustom(AppConstant.SP_USER, User.class);
         APIUtils.getInstance(getActivity()).getUserService()
                 .register(user).enqueue(new ZCallback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {
                     user.setId(response.body().getId());
-                    PrefManager.getInstance(getActivity()).putCustom("user", user);
+                    PrefManager.getInstance(getActivity()).putCustom(AppConstant.SP_USER, user);
                     startActivity(new Intent(getActivity(), Otp.class));
                 }
             }

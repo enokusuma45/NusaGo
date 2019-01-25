@@ -1,146 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    >
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        android:baselineAligned="false">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:baselineAligned="false">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="210dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="-20dp"
-            android:src="@drawable/bg_home" />
+                android:layout_width="wrap_content"
+                android:layout_height="210dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="-20dp"
+                android:src="@drawable/bg_home"/>
 
         <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="55dp"
-            app:srcCompat="@drawable/icon_avatar" />
-
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="65dp"
-            android:textSize="13dp"
-            android:textColor="#fff"
-            android:text="Hai.." />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="101dp"
-            android:layout_marginTop="80dp"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="#fff"
-            android:text="Muhammad Ali" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="70dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/btn_edit"
-            android:textSize="10dp"
-            android:text="Edit profile" />
-
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="210dp"
-            android:orientation="vertical"
-            android:layout_marginTop="40dp">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="195dp"
-                android:layout_marginTop="75dp"
-                android:padding="10dp"
-                app:srcCompat="@drawable/box_saldo" />
-
-            <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView6"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="115dp"
-                app:srcCompat="@drawable/icon_saldo" />
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="55dp"
+                app:srcCompat="@drawable/icon_avatar"/>
 
-            <TextView
-                android:id="@+id/textView"
+
+        <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="135dp"
-                android:layout_marginBottom="78dp"
-                android:text="Saldo Anda" />
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="65dp"
+                android:textSize="13dp"
+                android:textColor="#fff"
+                android:text="Hai.."/>
 
-            <TextView
-                android:id="@+id/textView2"
+        <TextView
+                android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/textView"
-                android:layout_alignBottom="@+id/imageView3"
-                android:text="Rp 850.000"
-                android:textSize="28sp"
-                android:textColor="#00b0f2"
-                android:textStyle="bold"/>
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="101dp"
+                android:layout_marginTop="80dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:text="Muhammad Ali"/>
+
+        <Button
+                android:id="@+id/button"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="70dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btn_edit"
+                android:textSize="10dp"
+                android:text="Edit profile"/>
 
 
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="210dp"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp">
+
+            <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="195dp"
+                    android:layout_marginTop="75dp"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/box_saldo"/>
+
+            <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="115dp"
+                    app:srcCompat="@drawable/icon_saldo"/>
+
+            <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="135dp"
+                    android:layout_marginBottom="78dp"
+                    android:text="Saldo Anda"/>
+
+            <TextView
+                    android:id="@+id/txtSaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textView"
+                    android:layout_alignBottom="@+id/imageView3"
+                    android:text="Rp 850.000"
+                    android:textSize="28sp"
+                    android:textColor="#00b0f2"
+                    android:textStyle="bold"/>
 
         </RelativeLayout>
 
 
+        <Button
+                android:layout_width="190dp"
+                android:layout_height="160dp"
+                android:id="@+id/ShowBarcode"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="235dp"
+                android:background="@drawable/btn_bayar_toko"/>
 
 
         <Button
-            android:layout_width="190dp"
-            android:layout_height="160dp"
-            android:id="@+id/ShowBarcode"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="235dp"
-            android:background="@drawable/btn_bayar_toko" />
-
-
-        <Button
-            android:layout_width="190dp"
-            android:id="@+id/History"
-            android:layout_height="160dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="235dp"
-            android:background="@drawable/btn_riyawat_transkasi" />
-
+                android:layout_width="190dp"
+                android:id="@+id/History"
+                android:layout_height="160dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="235dp"
+                android:background="@drawable/btn_riyawat_transkasi"/>
 
 
     </RelativeLayout>
