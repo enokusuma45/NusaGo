@@ -8,14 +8,14 @@ import android.widget.TextView;
 import id.zcode.android.nusago.R;
 import id.zcode.android.nusago.model.HistoryTrans;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class AdapterHistoryTrans extends RecyclerView.Adapter<AdapterHistoryTrans.HistoryTransHolder> {
 
-    private ArrayList<HistoryTrans> dataList;
+    private List<HistoryTrans> dataList;
 
-    public AdapterHistoryTrans(ArrayList<HistoryTrans> dataList) {
+    public AdapterHistoryTrans(List<HistoryTrans> dataList) {
         this.dataList = dataList;
     }
 

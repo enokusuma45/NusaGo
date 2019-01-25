@@ -41,7 +41,7 @@ public class Register extends ZActivity {
     }
 
     private void showTNC() {
-        String phone = txtPhone.getText().toString();
+        final String phone = txtPhone.getText().toString();
         if (phone.isEmpty()) {
             Helper.showMessage("Nomor Handphone harus diisi");
             return;
@@ -54,6 +54,9 @@ public class Register extends ZActivity {
                     startActivity(new Intent(Register.this, Otp.class));
                 } else {
                     TNC tnc = new TNC();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("phone", phone);
+                    tnc.setArguments(bundle);
                     tnc.show(getSupportFragmentManager(), "tnc");
                 }
             }

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 import butterknife.BindView;
+import com.google.gson.Gson;
 import id.zcode.android.nusago.adapter.AdapterHistoryTrans;
 import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.HistoryTrans;
@@ -29,6 +30,7 @@ public class History extends AppCompatActivity {
     @BindView(R.id.rvHistory)
     RecyclerView rvHistory;
     Context mContext;
+    private List<SalesOrder> salesOrders = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +57,9 @@ public class History extends AppCompatActivity {
             @Override
             public void onResponse(Call<Pageable<SalesOrder>> call, Response<Pageable<SalesOrder>> response) {
                 if (response.code() == 200) {
+                    List<HistoryTrans> transactions = new ArrayList<>();
                     Pageable<SalesOrder> pageable = response.body();
-                    List<SalesOrder> salesOrders = pageable.getContent();
-                    ArrayList<HistoryTrans> transactions = new ArrayList<>();
+                    salesOrders = pageable.getContent();
                     for (SalesOrder so : salesOrders) {
                         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy HH:mm");
                         transactions.add(
@@ -66,21 +68,21 @@ public class History extends AppCompatActivity {
                                         sdf.format(so.getDate())));
                     }
                     rvHistory.setAdapter(new AdapterHistoryTrans(transactions));
-                    initDataIntent(transactions);
+                    rvHistory.addOnItemTouchListener(
+                            new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(View view, int position) {
+                                    SalesOrder salesOrder = salesOrders.get(position);
+                                    PurchaseDetail bottomSheet = new PurchaseDetail();
+                                    Bundle args = new Bundle();
+                                    args.putString("so", new Gson().toJson(salesOrder));
+                                    bottomSheet.setArguments(args);
+                                    bottomSheet.show(getSupportFragmentManager(), "au amda");
+                                }
+                            }));
                 }
             }
         });
-    }
-
-    private void initDataIntent(ArrayList<HistoryTrans> historyTransArrayList) {
-        rvHistory.addOnItemTouchListener(
-                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Totalharga_popup bottomSheet = new Totalharga_popup();
-                        bottomSheet.show(getSupportFragmentManager(), "au amda");
-                    }
-                }));
     }
 
 }

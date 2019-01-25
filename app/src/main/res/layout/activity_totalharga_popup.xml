@@ -9,7 +9,7 @@
               app:behavior_hideable="false"
               app:behavior_peekHeight="80dp"
               android:padding="6dp"
-              tools:context="id.zcode.android.nusago.Totalharga_popup">
+              tools:context="id.zcode.android.nusago.PurchaseDetail">
 
     <ImageView
             android:layout_width="50dp"
@@ -120,102 +120,13 @@
                 android:background="#f4f4f4"
                 android:layout_width="350dp">
 
-            <LinearLayout
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvProducts"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                <LinearLayout
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:paddingRight="8dp"
-                        android:orientation="vertical">
-
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLength="20"
-                            android:text="Nama Barang"
-                            android:textColor="#697E91"
-                            android:textSize="12sp"
-                            android:textStyle="bold"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:maxLength="100"
-                            android:text="1. Beras 5Kg"
-                            android:textColor="#BFC5CA"
-                            android:textSize="12sp"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:maxLength="100"
-                            android:text="2. Kecap 300ml"
-                            android:textColor="#BFC5CA"
-                            android:textSize="12sp"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:maxLength="100"
-                            android:text="3. Minyak Goreng"
-                            android:textColor="#BFC5CA"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:maxLength="100"
-                            android:text="Harga"
-                            android:textColor="#697E91"
-                            android:textSize="12sp"
-                            android:textStyle="bold"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLength="20"
-                            android:text="Rp. 125.000,-"
-                            android:textColor="#BFC5CA"
-                            android:textSize="12sp"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLength="20"
-                            android:text="Rp. 125.000,-"
-                            android:textColor="#BFC5CA"
-                            android:textSize="12sp"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLength="20"
-                            android:text="Rp. 125.000,-"
-                            android:textColor="#BFC5CA"
-                            android:textSize="12sp"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1dp"
+                    android:paddingRight="8dp"/>
         </ScrollView>
 
     </RelativeLayout>
@@ -255,7 +166,7 @@
                     android:text="Total Belanja Anda"/>
 
             <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/txtTotalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/textView"

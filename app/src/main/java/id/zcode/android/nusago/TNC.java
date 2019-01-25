@@ -19,10 +19,15 @@ import retrofit2.Response;
 
 
 public class TNC extends BottomSheetDialogFragment {
+    String phone = null;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_tnc, container, false);
+        Bundle args = getArguments();
+        phone = args.getString("phone", "");
+
         Button btnOtp = v.findViewById(R.id.Otp);
         btnOtp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,15 +39,16 @@ public class TNC extends BottomSheetDialogFragment {
     }
 
     private void register() {
-        final User user = PrefManager.getInstance(getActivity()).getCustom(AppConstant.SP_USER, User.class);
         APIUtils.getInstance(getActivity()).getUserService()
-                .register(user).enqueue(new ZCallback<User>() {
+                .register(phone).enqueue(new ZCallback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {
-                    user.setId(response.body().getId());
+                    User user = response.body();
                     PrefManager.getInstance(getActivity()).putCustom(AppConstant.SP_USER, user);
                     startActivity(new Intent(getActivity(), Otp.class));
+                } else {
+                    dismiss();
                 }
             }
         });

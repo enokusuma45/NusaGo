@@ -91,7 +91,13 @@ public class Otp extends ZActivity {
 
     private void resendSms() {
         APIUtils.getInstance(this).getUserService()
-                .resendVerificationCode(user.getId());
+                .resendVerificationCode(user.getId()).enqueue(new ZCallback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.code() == 200)
+                    Helper.showMessage("Silahkan cek kembali SMS yang telah kami kirimkan ke " + user.getPhone());
+            }
+        });
     }
 
     private void submitOtp() {

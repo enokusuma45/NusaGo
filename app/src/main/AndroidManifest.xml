@@ -21,7 +21,7 @@
                   android:theme="@style/AppTheme.TransparentTheme"/>
         <activity android:name=".Home"/>
         <activity android:name=".History"/>
-        <activity android:name=".Totalharga_popup"></activity>
+        <activity android:name=".PurchaseDetail"></activity>
     </application>
 
 </manifest>
