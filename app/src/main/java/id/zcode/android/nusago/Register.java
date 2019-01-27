@@ -46,7 +46,7 @@ public class Register extends ZActivity {
             Helper.showMessage("Nomor Handphone harus diisi");
             return;
         }
-        APIUtils.getInstance(this).getUserService().checkPhone(phone).enqueue(new ZCallback<User>() {
+        APIUtils.getInstance(this).getAuthService().checkPhone(phone).enqueue(new ZCallback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {

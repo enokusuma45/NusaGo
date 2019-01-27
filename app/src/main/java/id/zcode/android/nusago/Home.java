@@ -6,13 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.User;
+import id.zcode.android.nusago.util.APIUtils;
 import id.zcode.android.nusago.util.AppConstant;
 import id.zcode.android.nusago.util.PrefManager;
+import retrofit2.Call;
+import retrofit2.Response;
 
 
 public class Home extends AppCompatActivity {
-    private User user;
+    private String phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,7 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 ShowBarcode bottomSheet = new ShowBarcode();
                 Bundle bundle = new Bundle();
-                bundle.putString("phone", user.getPhone());
+                bundle.putString("phone", phone);
                 bottomSheet.setArguments(bundle);
                 bottomSheet.show(getSupportFragmentManager(), "au amda");
             }
@@ -42,14 +46,31 @@ public class Home extends AppCompatActivity {
     }
 
     private void initValue() {
+        User user = PrefManager.getInstance(Home.this).getCustom(AppConstant.SP_USER, User.class);
+        render(user);
+
+        APIUtils.getInstance(this).getUserService().me().enqueue(new ZCallback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.code() == 200) {
+                    User user = response.body();
+                    render(user);
+                    PrefManager.getInstance(Home.this).putCustom(AppConstant.SP_USER, user);
+                }
+            }
+        });
+    }
+
+    private void render(User user) {
+        phone = user.getPhone();
         TextView name = findViewById(R.id.txtName),
                 saldo = findViewById(R.id.txtSaldo);
-        user = PrefManager.getInstance(Home.this).getCustom(AppConstant.SP_USER, User.class);
         if (user.getName() == null || user.getName().isEmpty())
             name.setText(user.getPhone());
         else
             name.setText(user.getName());
         saldo.setText(String.format("Rp %,.0f", user.getSaldo()));
+
     }
 
 
