@@ -1,4 +1,4 @@
-package id.zcode.android.nusago;
+package id.zcode.android.nusago.activity;
 
 import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
@@ -15,7 +15,6 @@ public class FragmentBottomSheetDialogFull extends BottomSheetDialogFragment {
     private BottomSheetBehavior mBehavior;
     private AppBarLayout app_bar_layout;
     private LinearLayout lyt_profile;
-
 
 
     @NonNull

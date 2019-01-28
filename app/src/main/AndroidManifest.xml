@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="id.zcode.android.nusago">
+          package="id.zcode.android.nusago.activity">
 
     <application
             android:allowBackup="true"
@@ -16,12 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".FragmentBottomSheetDialogFull"/>
         <activity android:name=".Otp"
                   android:theme="@style/AppTheme.TransparentTheme"/>
         <activity android:name=".Home"/>
         <activity android:name=".History"/>
-        <activity android:name=".PurchaseDetail"></activity>
+        <activity android:name=".Profile"/>
+        <activity android:name=".BuatPin"/>
     </application>
 
 </manifest>

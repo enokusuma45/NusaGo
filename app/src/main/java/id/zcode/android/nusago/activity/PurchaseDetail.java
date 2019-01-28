@@ -1,4 +1,4 @@
-package id.zcode.android.nusago;
+package id.zcode.android.nusago.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -52,7 +52,7 @@ public class PurchaseDetail extends BottomSheetDialogFragment {
         txtStoreAddress.setText(salesOrder.getStore().getAddress());
         txtDate.setText(sdf.format(salesOrder.getDate()));
         double total = 0;
-        for(SalesOrderDetail sod : salesOrder.getSalesOrderDetails()){
+        for (SalesOrderDetail sod : salesOrder.getSalesOrderDetails()) {
             total += sod.getPrice() * sod.getQuantity();
         }
         txtTotalPrice.setText(String.format("Rp %,.0f", total));

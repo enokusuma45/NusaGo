@@ -1,4 +1,4 @@
-package id.zcode.android.nusago;
+package id.zcode.android.nusago.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

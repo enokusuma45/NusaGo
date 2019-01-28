@@ -1,4 +1,4 @@
-package id.zcode.android.nusago;
+package id.zcode.android.nusago.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,5 +73,8 @@ public class Home extends AppCompatActivity {
 
     }
 
+    public void clickProfile(View view) {
+        startActivity(new Intent(Home.this, Profile.class));
+    }
 
 }

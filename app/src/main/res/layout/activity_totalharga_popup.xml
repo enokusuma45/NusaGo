@@ -9,7 +9,7 @@
               app:behavior_hideable="false"
               app:behavior_peekHeight="80dp"
               android:padding="6dp"
-              tools:context="id.zcode.android.nusago.PurchaseDetail">
+              tools:context="id.zcode.android.nusago.activity.PurchaseDetail">
 
     <ImageView
             android:layout_width="50dp"
