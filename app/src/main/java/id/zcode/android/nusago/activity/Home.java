@@ -77,4 +77,8 @@ public class Home extends AppCompatActivity {
         startActivity(new Intent(Home.this, Profile.class));
     }
 
+    public void createPin(View view){
+        startActivity(new Intent(Home.this, BuatPin.class));
+    }
+
 }

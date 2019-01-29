@@ -5,7 +5,9 @@ public class User {
     private String ktp;
     private String phone;
     private String name;
+    private String address;
     private double saldo;
+    private Factory factory;
 
     public String getId() {
         return id;
@@ -45,5 +47,21 @@ public class User {
 
     public void setKtp(String ktp) {
         this.ktp = ktp;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Factory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(Factory factory) {
+        this.factory = factory;
     }
 }

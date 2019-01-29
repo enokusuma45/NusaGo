@@ -1,81 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@android:color/white">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        android:baselineAligned="false">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="240dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="-30dp"
-            android:src="@drawable/bg_profile" />
-
-        <ImageView
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_centerInParent="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/icon_avatar" />
-
-
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="85dp"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="#fff"
-            android:text="Muhammad Ali" />
-
-
-
-
-        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="10"
-            android:baselineAligned="false" />
+            android:baselineAligned="false">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="120dp"
-            android:src="@drawable/bg_box_pp" />
+                android:layout_width="wrap_content"
+                android:layout_height="240dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="-30dp"
+                android:src="@drawable/bg_profile"/>
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="160dp"
-            app:srcCompat="@drawable/icon_phone" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="@dimen/spacing_large" />
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/icon_avatar"/>
 
 
+        <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="85dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:text="Muhammad Ali"/>
+
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="490dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="120dp"
+                android:src="@drawable/bg_box_pp"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="160dp"
+        >
+
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="75dp"
+                    app:srcCompat="@drawable/icon_phone"/>
+
+            <TextView
+                    android:id="@+id/nohp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:text="Nomor Telephone"
+                    android:textColor="#3fa3f2"
+                    android:textStyle="bold"/>
+
+            <TextView
+                    android:id="@+id/txtPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nohp"
+                    android:layout_marginStart="120dp"
+                    android:text="0811881033"
+                    android:textStyle="bold"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="220dp"
+        >
+
+            <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="73dp"
+                    app:srcCompat="@drawable/icon_ktp"/>
+
+            <TextView
+                    android:id="@+id/lblKtp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:text="Nomor KTP"
+                    android:textColor="#3fa3f2"
+                    android:textStyle="bold"/>
+
+            <TextView
+                    android:id="@+id/txtKtp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblKtp"
+                    android:layout_marginStart="120dp"
+                    android:text="1231234329432"
+                    android:textStyle="bold"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="280dp"
+        >
+
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="75dp"
+                    app:srcCompat="@drawable/icon_map"/>
+
+            <TextView
+                    android:id="@+id/lblAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:text="Alamat"
+                    android:textColor="#3fa3f2"
+                    android:textStyle="bold"/>
+
+            <TextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblAddress"
+                    android:layout_marginStart="120dp"
+                    android:text="Jl Raya Yos Sudarso sukabumi no 2a "
+                    android:textStyle="bold"/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="350dp"
+        >
+
+            <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="73dp"
+                    app:srcCompat="@drawable/icon_work"/>
+
+            <TextView
+                    android:id="@+id/lblFactory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:text="Pekerja di"
+                    android:textColor="#3fa3f2"
+                    android:textStyle="bold"/>
+
+            <TextView
+                    android:id="@+id/txtFactory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblFactory"
+                    android:layout_marginStart="120dp"
+                    android:text="Pabrik Sepatu Nike"
+                    android:textStyle="bold"/>
+
+
+        </RelativeLayout>
+
+
+        <Button
+                android:layout_width="250dp"
+                android:layout_height="55dp"
+                android:background="@drawable/btn_nusago"
+                android:text="Logout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="420dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
 
 
     </RelativeLayout>
