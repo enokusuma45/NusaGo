@@ -90,7 +90,7 @@ public class Otp extends ZActivity {
     }
 
     private void resendSms() {
-        APIUtils.getInstance(this).getAuthService()
+        APIUtils.getAuthService(this)
                 .resendVerificationCode(user.getId()).enqueue(new ZCallback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -118,7 +118,7 @@ public class Otp extends ZActivity {
         Map map = new HashMap<>();
         map.put("id", user.getId());
         map.put("code", sb.toString());
-        APIUtils.getInstance(this).getAuthService()
+        APIUtils.getAuthService(this)
                 .activation(map).enqueue(new ZCallback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

@@ -7,10 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.PIN;
-import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
-import id.zcode.android.nusago.util.AppConstant;
-import id.zcode.android.nusago.util.PrefManager;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -28,14 +25,15 @@ public class BuatPin extends AppCompatActivity {
     private void init() {
         final TextView txtPin = findViewById(R.id.txtPin),
                 lblTimer = findViewById(R.id.lblTimer);
-        User user = PrefManager.getInstance(this).getCustom(AppConstant.SP_USER, User.class);
-        APIUtils.getInstance(this).getUserService().getPin(user.getId())
+        APIUtils.getUserService(this).getPin()
                 .enqueue(new ZCallback<PIN>() {
                     @Override
                     public void onResponse(Call<PIN> call, Response<PIN> response) {
                         if (response.code() == 200) {
-                            txtPin.setText(response.body().getValue());
-                            render(response.body().getExpiredDate(), lblTimer);
+                            PIN pin = response.body();
+                            String value = pin.getValue().replace("", " ").trim();
+                            txtPin.setText(value);
+                            render(pin.getExpired(), lblTimer);
                         }
                     }
                 });
@@ -50,7 +48,7 @@ public class BuatPin extends AppCompatActivity {
         if (diff < 0) return;
         new CountDownTimer(diff, 1000) {
             public void onTick(long millisUntilFinished) {
-                lbl.setText("seconds remaining: " + millisUntilFinished / 1000);
+                lbl.setText("Kode ini akan kadaluarsa dalam " + millisUntilFinished / 1000 + " detik");
             }
 
             public void onFinish() {

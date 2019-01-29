@@ -39,4 +39,8 @@ public class PrefManager {
         return new Gson().fromJson(s, typeOf);
     }
 
+    public boolean cleanUp(){
+        return sharedPreferences.edit().clear().commit();
+    }
+
 }

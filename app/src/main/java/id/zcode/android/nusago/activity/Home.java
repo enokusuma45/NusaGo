@@ -49,7 +49,7 @@ public class Home extends AppCompatActivity {
         User user = PrefManager.getInstance(Home.this).getCustom(AppConstant.SP_USER, User.class);
         render(user);
 
-        APIUtils.getInstance(this).getUserService().me().enqueue(new ZCallback<User>() {
+        APIUtils.getUserService(this).me().enqueue(new ZCallback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {

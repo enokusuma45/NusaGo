@@ -10,6 +10,6 @@ public interface UserService {
     @GET("me")
     Call<User> me();
 
-    @GET("pin/{userId}")
-    Call<PIN> getPin(@Path("userId") String userId);
+    @GET("pin")
+    Call<PIN> getPin();
 }

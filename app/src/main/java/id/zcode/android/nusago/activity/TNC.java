@@ -39,7 +39,7 @@ public class TNC extends BottomSheetDialogFragment {
     }
 
     private void register() {
-        APIUtils.getInstance(getActivity()).getAuthService()
+        APIUtils.getAuthService(getActivity())
                 .register(phone).enqueue(new ZCallback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

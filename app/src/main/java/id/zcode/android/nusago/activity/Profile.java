@@ -1,7 +1,9 @@
 package id.zcode.android.nusago.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.AppConstant;
@@ -25,11 +27,23 @@ public class Profile extends AppCompatActivity {
 
         User user = PrefManager.getInstance(this).getCustom(AppConstant.SP_USER, User.class);
         if (user == null) return;
-        txtName.setText(user.getName());
-        txtPhone.setText(user.getPhone());
-        txtKtp.setText(user.getKtp());
-        txtAddress.setText(user.getAddress());
-        if (user.getFactory() != null)
-            txtFactory.setText(user.getFactory().getName());
+        String factory = user.getFactory() != null ? user.getFactory().getName() : "-";
+        String name = user.getName() == null ? "-" : user.getName();
+        String phone = user.getPhone() == null ? "-" : user.getPhone();
+        String ktp = user.getKtp() == null ? "-" : user.getKtp();
+        String address = user.getAddress() == null ? "-" : user.getAddress();
+
+        txtName.setText(name);
+        txtPhone.setText(phone);
+        txtKtp.setText(ktp);
+        txtAddress.setText(address);
+        txtFactory.setText(factory);
+    }
+
+    public void logout(View view) {
+        // remove shared preference
+        PrefManager.getInstance(this).cleanUp();
+        startActivity(new Intent(this, Register.class));
+        finish();
     }
 }

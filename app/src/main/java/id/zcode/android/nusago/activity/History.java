@@ -1,7 +1,6 @@
 package id.zcode.android.nusago.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -44,7 +43,6 @@ public class History extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(History.this, Home.class));
                 finish();
             }
         });
@@ -52,7 +50,7 @@ public class History extends AppCompatActivity {
 
 
     void initData() {
-        Call<Pageable<SalesOrder>> salesOrderCall = APIUtils.getInstance(this).getSalesOrderService().get(0, 20);
+        Call<Pageable<SalesOrder>> salesOrderCall = APIUtils.getSalesOrderService(this).get(0, 20);
         salesOrderCall.enqueue(new ZCallback<Pageable<SalesOrder>>() {
             @Override
             public void onResponse(Call<Pageable<SalesOrder>> call, Response<Pageable<SalesOrder>> response) {
