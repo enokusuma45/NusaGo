@@ -2,6 +2,7 @@ package id.zcode.android.nusago.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -17,12 +18,21 @@ import retrofit2.Response;
 
 public class Home extends AppCompatActivity {
     private String phone;
+    private SwipeRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initValue();
+        refreshLayout = findViewById(R.id.refreshLayout);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initValue();
+                refreshLayout.setRefreshing(false);
+            }
+        });
         Button buttonOpenBottomSheet = findViewById(R.id.ShowBarcode);
         buttonOpenBottomSheet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +87,7 @@ public class Home extends AppCompatActivity {
         startActivity(new Intent(Home.this, Profile.class));
     }
 
-    public void createPin(View view){
+    public void createPin(View view) {
         startActivity(new Intent(Home.this, BuatPin.class));
     }
 

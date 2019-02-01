@@ -10,6 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".Register"
+                  android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.TransparentTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -17,11 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Otp"
+                  android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.TransparentTheme"/>
-        <activity android:name=".Home"/>
-        <activity android:name=".History"/>
-        <activity android:name=".Profile"/>
-        <activity android:name=".BuatPin"/>
+        <activity android:name=".Home" android:screenOrientation="portrait"/>
+        <activity android:name=".History" android:screenOrientation="portrait"/>
+        <activity android:name=".Profile" android:screenOrientation="portrait"/>
+        <activity android:name=".BuatPin" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
