@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+>
+    <TextView
+            android:id="@+id/txtProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLength="100"
+            android:text="1. Beras 5Kg"
+            android:textColor="#BFC5CA"
+            android:layout_alignParentLeft="true"
+            android:textSize="12sp"/>
+
+    <TextView
+            android:id="@+id/txtQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLength="100"
+            android:text="100"
+            android:textColor="#BFC5CA"
+            android:layout_marginRight="80dp"
+            android:layout_alignParentRight="true"
+            android:textSize="12sp"/>
+
+    <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLength="100"
+            android:text="Rp 20.000"
+            android:textColor="#BFC5CA"
+            android:layout_alignParentRight="true"
+            android:textSize="12sp"/>
+</RelativeLayout>

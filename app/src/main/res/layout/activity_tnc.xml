@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    app:behavior_peekHeight="200dp"
+    android:padding="6dp"
+    app:behavior_hideable="false"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/popshape" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Syarat ketentuan"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"/>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_width="fill_parent">
+
+        <ScrollView
+            android:id="@+id/ScrollView01"
+            android:layout_height="300dp"
+            android:padding="14dp"
+            android:layout_marginBottom="30dp"
+            android:background="#f4f4f4"
+            android:layout_width="350dp">
+
+            <TextView
+                android:id="@+id/TEXT"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:justificationMode="inter_word"
+                android:text="@string/tnc"/>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="-15dp"
+        app:buttonTint="@color/colorPrimaryLight"
+        android:text="Anda Setuju" />
+
+    <Button
+        android:id="@+id/Otp"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="-6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="-6dp"
+        android:background="@drawable/btn_nusago"
+        android:text="Daftar Sekarang"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+</LinearLayout>

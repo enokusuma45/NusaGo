@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white">
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:baselineAligned="false">
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true">
+
+            <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="300dp"
+                    android:layout_height="190dp"
+                    android:orientation="vertical"
+                    android:layout_marginRight="-50dp"
+                    android:layout_alignParentRight="true"
+                    app:srcCompat="@drawable/bg_phone"/>
+        </RelativeLayout>
+
+
+        <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="160dp"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:paddingTop="20dp"
+                    android:text="Verifikasi SMS"
+                    android:textColor="#757575"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:typeface="normal"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kami telah kirim kode verifikasi"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@color/blue_grey_800"/>
+
+            <TextView
+                    android:id="@+id/txtPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="Ke 628123534888"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@color/blue_grey_800"/>
+
+            <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_mlarge"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:orientation="horizontal">
+
+
+                <EditText
+                        android:id="@+id/txtOtp1"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:maxLines="1"
+                        android:textSize="24sp"
+                        android:background="@drawable/form_otp"
+                        android:singleLine="true"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textColor="@color/grey_90"
+                        android:textStyle="bold"/>
+
+                <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="0dp"/>
+
+                <EditText
+                        android:id="@+id/txtOtp2"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:maxLines="1"
+                        android:textSize="24sp"
+                        android:background="@drawable/form_otp"
+                        android:singleLine="true"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textColor="@color/grey_90"
+                        android:textStyle="bold"/>
+
+                <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="0dp"/>
+
+                <EditText
+                        android:id="@+id/txtOtp3"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:maxLines="1"
+                        android:textSize="24sp"
+                        android:background="@drawable/form_otp"
+                        android:singleLine="true"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textColor="@color/grey_90"
+                        android:textStyle="bold"/>
+                <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="0dp"/>
+
+                <EditText
+                        android:id="@+id/txtOtp4"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:maxLines="1"
+                        android:textSize="24sp"
+                        android:background="@drawable/form_otp"
+                        android:singleLine="true"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textColor="@color/grey_90"
+                        android:textStyle="bold"/>
+
+                <View
+                        android:layout_width="@dimen/spacing_medium"
+                        android:layout_height="0dp"/>
+
+                <EditText
+                        android:id="@+id/txtOtp5"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:maxLines="1"
+                        android:textSize="24sp"
+                        android:background="@drawable/form_otp"
+                        android:singleLine="true"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textColor="@color/grey_90"
+                        android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <View
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"/>
+
+            <Button
+                    android:id="@+id/btnSend"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:background="@drawable/btn_nusago"
+                    android:text="Kirim"
+                    android:textSize="20sp"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+            />
+
+            <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_medium"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:text="Belum di kirim?"
+                        android:layout_marginRight="2dp"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/blue_grey_800"/>
+
+                <TextView
+                        android:id="@+id/btnResend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:text=" Kirim Ulang"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="#0082fe"/>
+
+            </LinearLayout>
+
+            <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_xlarge"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
