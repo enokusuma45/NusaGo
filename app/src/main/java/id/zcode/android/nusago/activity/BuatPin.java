@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.TextView;
 import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.PIN;
+import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
+import id.zcode.android.nusago.util.AppConstant;
+import id.zcode.android.nusago.util.PrefManager;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -19,8 +22,17 @@ public class BuatPin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buat_pin);
-        init();
+        init2();
     }
+
+    private void init2() {
+        final TextView txtPin = findViewById(R.id.txtPin),
+                lblTimer = findViewById(R.id.lblTimer);
+        lblTimer.setVisibility(View.INVISIBLE);
+        User user = PrefManager.getInstance(this).getCustom(AppConstant.SP_USER, User.class);
+        txtPin.setText(user.getPin());
+    }
+
 
     private void init() {
         final TextView txtPin = findViewById(R.id.txtPin),

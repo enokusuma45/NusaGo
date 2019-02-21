@@ -11,16 +11,21 @@ import butterknife.BindView;
 import com.google.gson.Gson;
 import id.zcode.android.nusago.adapter.AdapterHistoryTrans;
 import id.zcode.android.nusago.component.ZCallback;
+import id.zcode.android.nusago.model.Container2;
 import id.zcode.android.nusago.model.HistoryTrans;
-import id.zcode.android.nusago.model.Pageable;
 import id.zcode.android.nusago.model.SalesOrder;
+import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
+import id.zcode.android.nusago.util.AppConstant;
+import id.zcode.android.nusago.util.PrefManager;
 import id.zcode.android.nusago.util.RecyclerItemClickListener;
 import retrofit2.Call;
 import retrofit2.Response;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -50,20 +55,35 @@ public class History extends AppCompatActivity {
 
 
     void initData() {
-        Call<Pageable<SalesOrder>> salesOrderCall = APIUtils.getSalesOrderService(this).get(0, 20);
-        salesOrderCall.enqueue(new ZCallback<Pageable<SalesOrder>>() {
+        User user = PrefManager.getInstance(this).getCustom(AppConstant.SP_USER, User.class);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date now = new Date();
+        String endDate = sdf.format(now);
+        Calendar c = Calendar.getInstance();
+        c.setTime(now);
+        c.add(Calendar.MONTH, -3);
+//        c.set(Calendar.DATE, 1);
+        String startDate = sdf.format(c.getTime());
+
+        final Call<Container2<SalesOrder>> salesOrderCall = APIUtils.getSalesOrderService(this)
+                .get(user.getId().trim(), startDate, endDate, 0, 100);
+        salesOrderCall.enqueue(new ZCallback<Container2<SalesOrder>>() {
             @Override
-            public void onResponse(Call<Pageable<SalesOrder>> call, Response<Pageable<SalesOrder>> response) {
+            public void onResponse(Call<Container2<SalesOrder>> call, Response<Container2<SalesOrder>> response) {
                 if (response.code() == 200) {
                     List<HistoryTrans> transactions = new ArrayList<>();
-                    Pageable<SalesOrder> pageable = response.body();
-                    salesOrders = pageable.getContent();
-                    for (SalesOrder so : salesOrders) {
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy HH:mm");
-                        transactions.add(
-                                new HistoryTrans(
-                                        so.getStore().getName(),
-                                        sdf.format(so.getDate())));
+                    Container2<SalesOrder> pageable = response.body();
+                    List<SalesOrder> temp = pageable.getData();
+                    salesOrders = new ArrayList<>();
+                    for (SalesOrder so : temp) {
+                        if (so.getTotal() > 0) {
+                            salesOrders.add(so);
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+                            transactions.add(
+                                    new HistoryTrans(
+                                            so.getStore(),
+                                            sdf.format(so.getDate())));
+                        }
                     }
                     rvHistory.setAdapter(new AdapterHistoryTrans(transactions));
                     rvHistory.addOnItemTouchListener(

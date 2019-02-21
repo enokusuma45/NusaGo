@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import id.zcode.android.nusago.component.ZActivity;
 import id.zcode.android.nusago.component.ZCallback;
+import id.zcode.android.nusago.model.Container;
 import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
 import id.zcode.android.nusago.util.AppConstant;
@@ -18,7 +19,7 @@ import retrofit2.Response;
 
 public class Register extends ZActivity {
 
-    private TextInputEditText txtPhone;
+    private TextInputEditText txtUserId, txtPin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,34 +31,39 @@ public class Register extends ZActivity {
             finish();
             return;
         }
-        txtPhone = findViewById(R.id.txtPhone);
+        txtUserId = findViewById(R.id.txtUserId);
+        txtPin = findViewById(R.id.txtPin);
         Button btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showTNC();
+                validateRegister();
             }
         });
     }
 
-    private void showTNC() {
-        final String phone = txtPhone.getText().toString();
-        if (phone.isEmpty()) {
+    private void validateRegister() {
+        final String userId = txtUserId.getText().toString();
+        final String pin = txtPin.getText().toString();
+        if (userId.isEmpty()) {
             Helper.showMessage("Nomor Handphone harus diisi");
             return;
         }
-        APIUtils.getAuthService(this).checkPhone(phone).enqueue(new ZCallback<User>() {
+        APIUtils.getUserService(this).getUser(userId).enqueue(new ZCallback<Container<User>>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.code() == 200) {
-                    PrefManager.getInstance(Register.this).putCustom(AppConstant.SP_USER, response.body());
-                    startActivity(new Intent(Register.this, Otp.class));
+            public void onResponse(Call<Container<User>> call, Response<Container<User>> response) {
+                if (response.code() == 200 && response.body().getCode() == 1) {
+                    User user = response.body().getData();
+                    if (user.getPin().equals(pin)) {
+                        user.setId(user.getId().trim());
+                        PrefManager.getInstance(Register.this).putCustom(AppConstant.SP_USER, user);
+                        PrefManager.getInstance(Register.this).putString(AppConstant.SP_TOKEN, userId + pin);
+                        startActivity(new Intent(Register.this, Home.class));
+                    } else {
+                        Helper.showMessage("PIN yang Anda masukan salah");
+                    }
                 } else {
-                    TNC tnc = new TNC();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("phone", phone);
-                    tnc.setArguments(bundle);
-                    tnc.show(getSupportFragmentManager(), "tnc");
+                    Helper.showMessage(response.body().getMessage());
                 }
             }
         });

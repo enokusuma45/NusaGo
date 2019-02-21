@@ -1,17 +1,23 @@
 package id.zcode.android.nusago.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class SalesOrder {
     private String id;
+    @SerializedName("tgl")
     private Date date;
+    @SerializedName("id_trxsale")
     private String code;
     private int status;
     private String notes;
     private User customer;
-    private Store store;
+    @SerializedName("id_outlet")
+    private String store;
+    private double total;
     private List<SalesOrderDetail> salesOrderDetails = new ArrayList<>();
 
     public String getId() {
@@ -38,28 +44,12 @@ public class SalesOrder {
         this.status = status;
     }
 
-    public User getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(User customer) {
-        this.customer = customer;
-    }
-
     public String getNotes() {
         return notes;
     }
 
     public void setNotes(String notes) {
         this.notes = notes;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
     }
 
     public List<SalesOrderDetail> getSalesOrderDetails() {
@@ -86,5 +76,29 @@ public class SalesOrder {
     public void removeDetail(SalesOrderDetail salesOrderDetail) {
         salesOrderDetails.remove(salesOrderDetail);
         salesOrderDetail.setSalesOrder(null);
+    }
+
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
+
+    public String getStore() {
+        return store;
+    }
+
+    public void setStore(String store) {
+        this.store = store;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

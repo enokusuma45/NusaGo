@@ -1,13 +1,21 @@
 package id.zcode.android.nusago.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
+    @SerializedName("id_cust")
     private String id;
     private String ktp;
+    @SerializedName("no_hp")
     private String phone;
+    @SerializedName("nm_customer")
     private String name;
+    @SerializedName("address1")
     private String address;
+    @SerializedName("sisa")
     private double saldo;
     private Factory factory;
+    private String pin;
 
     public String getId() {
         return id;
@@ -63,5 +71,13 @@ public class User {
 
     public void setFactory(Factory factory) {
         this.factory = factory;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 }

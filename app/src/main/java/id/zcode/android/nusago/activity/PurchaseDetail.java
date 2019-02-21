@@ -48,14 +48,14 @@ public class PurchaseDetail extends BottomSheetDialogFragment {
         txtDate = v.findViewById(R.id.txtDate);
         txtTotalPrice = v.findViewById(R.id.txtTotalPrice);
 
-        txtStoreName.setText(salesOrder.getStore().getName());
-        txtStoreAddress.setText(salesOrder.getStore().getAddress());
+        txtStoreName.setText(salesOrder.getStore());
+        txtStoreAddress.setText("~");
         txtDate.setText(sdf.format(salesOrder.getDate()));
         double total = 0;
         for (SalesOrderDetail sod : salesOrder.getSalesOrderDetails()) {
             total += sod.getPrice() * sod.getQuantity();
         }
-        txtTotalPrice.setText(String.format("Rp %,.0f", total));
+        txtTotalPrice.setText(String.format("Rp %,.0f", salesOrder.getTotal()));
 
         mRecyclerView.setAdapter(new PurchaseDetailAdapter(salesOrder.getSalesOrderDetails()));
     }

@@ -13,12 +13,12 @@ public class APIUtils {
     }
 
     public static UserService getUserService(Context context) {
-        String USER_URL = AppConstant.BASE_URL + "/user/";
+        String USER_URL = AppConstant.BASE_URL;
         return RetrofitClient.getClient(context, USER_URL).create(UserService.class);
     }
 
     public static SalesOrderService getSalesOrderService(Context context) {
-        String SALES_ORDER_URL = AppConstant.BASE_URL + "/sales-order/";
+        String SALES_ORDER_URL = AppConstant.BASE_URL;
         return RetrofitClient.getClient(context, SALES_ORDER_URL).create(SalesOrderService.class);
     }
 }

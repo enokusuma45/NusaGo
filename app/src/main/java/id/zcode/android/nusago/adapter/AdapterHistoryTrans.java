@@ -42,8 +42,8 @@ public class AdapterHistoryTrans extends RecyclerView.Adapter<AdapterHistoryTran
 
         public HistoryTransHolder(View itemView) {
             super(itemView);
-            txtNama = (TextView) itemView.findViewById(R.id.tvNamaToko);
-            txtNpm = (TextView) itemView.findViewById(R.id.tvDateTrans);
+            txtNama = itemView.findViewById(R.id.tvNamaToko);
+            txtNpm = itemView.findViewById(R.id.tvDateTrans);
         }
     }
 }
