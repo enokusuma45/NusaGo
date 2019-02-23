@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import id.zcode.android.nusago.component.ZCallback;
+import id.zcode.android.nusago.model.Container;
 import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
 import id.zcode.android.nusago.util.AppConstant;
@@ -17,7 +18,7 @@ import retrofit2.Response;
 
 
 public class Home extends AppCompatActivity {
-    private String phone;
+    private String userId;
     private SwipeRefreshLayout refreshLayout;
 
     @Override
@@ -39,7 +40,7 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 ShowBarcode bottomSheet = new ShowBarcode();
                 Bundle bundle = new Bundle();
-                bundle.putString("phone", phone);
+                bundle.putString("userId", userId);
                 bottomSheet.setArguments(bundle);
                 bottomSheet.show(getSupportFragmentManager(), "au amda");
             }
@@ -59,11 +60,11 @@ public class Home extends AppCompatActivity {
         User user = PrefManager.getInstance(Home.this).getCustom(AppConstant.SP_USER, User.class);
         render(user);
 
-        APIUtils.getUserService(this).me().enqueue(new ZCallback<User>() {
+        APIUtils.getUserService(this).getUser(user.getId()).enqueue(new ZCallback<Container<User>>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<Container<User>> call, Response<Container<User>> response) {
                 if (response.code() == 200) {
-                    User user = response.body();
+                    User user = response.body().getData();
                     render(user);
                     PrefManager.getInstance(Home.this).putCustom(AppConstant.SP_USER, user);
                 }
@@ -72,7 +73,7 @@ public class Home extends AppCompatActivity {
     }
 
     private void render(User user) {
-        phone = user.getPhone();
+        userId = user.getId();
         TextView name = findViewById(R.id.txtName),
                 saldo = findViewById(R.id.txtSaldo);
         if (user.getName() == null || user.getName().isEmpty())

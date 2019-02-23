@@ -1,10 +1,17 @@
 package id.zcode.android.nusago.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class SalesOrderDetail {
     private String id;
+    @SerializedName("qty")
     private int quantity;
+    @SerializedName("hrgjual")
     private double price;
+    @SerializedName("nm_brg")
     private String productName;
+    @SerializedName("id_trxsale")
+    private String soCode;
     private SalesOrder salesOrder;
 
     public String getId() {
@@ -47,16 +54,12 @@ public class SalesOrderDetail {
         this.productName = productName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SalesOrderDetail)) return false;
-        return id != null && id.equals(((SalesOrderDetail) o).id);
+    public String getSoCode() {
+        return soCode;
     }
 
-    @Override
-    public int hashCode() {
-        return 1;
+    public void setSoCode(String soCode) {
+        this.soCode = soCode;
     }
 }
 

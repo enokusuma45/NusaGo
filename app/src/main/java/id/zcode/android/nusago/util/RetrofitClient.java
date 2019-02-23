@@ -14,7 +14,7 @@ public class RetrofitClient {
                 .setLenient()
                 .create();
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new NusagoInterceptor(context))
+//                .addInterceptor(new NusagoInterceptor(context))
                 .build();
 
         return new Retrofit.Builder()

@@ -39,7 +39,7 @@ public class ShowBarcode extends BottomSheetDialogFragment {
 
     private void initData(View v) {
         Bundle args = getArguments();
-        String text = args.getString("phone", "");
+        String text = args.getString("userId", "").trim();
         ImageView iv = v.findViewById(R.id.imgBarcode);
         TextView txt = v.findViewById(R.id.txtPhone);
         txt.setText(text);
