@@ -12,10 +12,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import id.zcode.android.nusago.adapter.PurchaseDetailAdapter;
+import id.zcode.android.nusago.component.ZCallback;
+import id.zcode.android.nusago.model.Container2;
 import id.zcode.android.nusago.model.SalesOrder;
 import id.zcode.android.nusago.model.SalesOrderDetail;
+import id.zcode.android.nusago.model.User;
+import id.zcode.android.nusago.util.APIUtils;
+import id.zcode.android.nusago.util.AppConstant;
+import id.zcode.android.nusago.util.Helper;
+import id.zcode.android.nusago.util.PrefManager;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class PurchaseDetail extends BottomSheetDialogFragment {
@@ -57,6 +69,32 @@ public class PurchaseDetail extends BottomSheetDialogFragment {
         }
         txtTotalPrice.setText(String.format("Rp %,.0f", salesOrder.getTotal()));
 
-        mRecyclerView.setAdapter(new PurchaseDetailAdapter(salesOrder.getSalesOrderDetails()));
+        // get sales order detail
+        User user = PrefManager.getInstance(getActivity()).getCustom(AppConstant.SP_USER, User.class);
+        Map<String, String> map = Helper.getThreeMonths(salesOrder.getDate());
+
+        final Call<Container2<SalesOrderDetail>> salesOrderDetailCall =
+                APIUtils.getSalesOrderService(getActivity())
+                        .getDetail(user.getId().trim(), map.get("startDate"), map.get("endDate"), 0, 100);
+
+        salesOrderDetailCall.enqueue(new ZCallback<Container2<SalesOrderDetail>>() {
+            @Override
+            public void onResponse(Call<Container2<SalesOrderDetail>> call, Response<Container2<SalesOrderDetail>> response) {
+                if (response.code() == 200) {
+                    Container2<SalesOrderDetail> x = response.body();
+                    if (x.getStatus().equals("success")) {
+                        List<SalesOrderDetail> temp = x.getData();
+                        List<SalesOrderDetail> salesOrderDetails = new ArrayList<>();
+                        // filter only same sales order code with parent
+                        for (SalesOrderDetail sod : temp) {
+                            if (sod.getSoCode() != null && sod.getSoCode().equals(salesOrder.getCode()))
+                                salesOrderDetails.add(sod);
+                        }
+                        mRecyclerView.setAdapter(new PurchaseDetailAdapter(salesOrderDetails));
+                    }
+                }
+            }
+        });
+
     }
 }
