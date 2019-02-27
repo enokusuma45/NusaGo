@@ -10,8 +10,6 @@ public class SalesOrderDetail {
     private double price;
     @SerializedName("nm_brg")
     private String productName;
-    @SerializedName("id_trxsale")
-    private String soCode;
     private SalesOrder salesOrder;
 
     public String getId() {
@@ -54,12 +52,5 @@ public class SalesOrderDetail {
         this.productName = productName;
     }
 
-    public String getSoCode() {
-        return soCode;
-    }
-
-    public void setSoCode(String soCode) {
-        this.soCode = soCode;
-    }
 }
 

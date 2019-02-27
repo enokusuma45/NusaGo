@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import id.zcode.android.nusago.adapter.PurchaseDetailAdapter;
@@ -16,18 +18,12 @@ import id.zcode.android.nusago.component.ZCallback;
 import id.zcode.android.nusago.model.Container2;
 import id.zcode.android.nusago.model.SalesOrder;
 import id.zcode.android.nusago.model.SalesOrderDetail;
-import id.zcode.android.nusago.model.User;
 import id.zcode.android.nusago.util.APIUtils;
-import id.zcode.android.nusago.util.AppConstant;
-import id.zcode.android.nusago.util.Helper;
-import id.zcode.android.nusago.util.PrefManager;
 import retrofit2.Call;
 import retrofit2.Response;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class PurchaseDetail extends BottomSheetDialogFragment {
@@ -35,12 +31,19 @@ public class PurchaseDetail extends BottomSheetDialogFragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SalesOrder salesOrder;
+    private ScrollView scrollView;
+    private TextView loadingText;
+    private LinearLayout totalHargaContainer;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_totalharga_popup, container, true);
+        scrollView = v.findViewById(R.id.scrollViewProducts);
+        loadingText = v.findViewById(R.id.loadingProducts);
         mRecyclerView = v.findViewById(R.id.rvProducts);
+        totalHargaContainer = v.findViewById(R.id.totalPriceContainer);
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -48,7 +51,14 @@ public class PurchaseDetail extends BottomSheetDialogFragment {
         return v;
     }
 
+    private void showLoading(boolean isLoading) {
+        loadingText.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        scrollView.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+        totalHargaContainer.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+    }
+
     private void initData(View v) {
+        showLoading(true);
         Bundle args = getArguments();
         String temp = args.getString("so", "");
         salesOrder = new Gson().fromJson(temp, SalesOrder.class);
@@ -69,13 +79,9 @@ public class PurchaseDetail extends BottomSheetDialogFragment {
         }
         txtTotalPrice.setText(String.format("Rp %,.0f", salesOrder.getTotal()));
 
-        // get sales order detail
-        User user = PrefManager.getInstance(getActivity()).getCustom(AppConstant.SP_USER, User.class);
-        Map<String, String> map = Helper.getThreeMonths(salesOrder.getDate());
-
         final Call<Container2<SalesOrderDetail>> salesOrderDetailCall =
                 APIUtils.getSalesOrderService(getActivity())
-                        .getDetail(user.getId().trim(), map.get("startDate"), map.get("endDate"), 0, 100);
+                        .getDetail(salesOrder.getCode(), 0, 100);
 
         salesOrderDetailCall.enqueue(new ZCallback<Container2<SalesOrderDetail>>() {
             @Override
@@ -83,14 +89,11 @@ public class PurchaseDetail extends BottomSheetDialogFragment {
                 if (response.code() == 200) {
                     Container2<SalesOrderDetail> x = response.body();
                     if (x.getStatus().equals("success")) {
-                        List<SalesOrderDetail> temp = x.getData();
-                        List<SalesOrderDetail> salesOrderDetails = new ArrayList<>();
-                        // filter only same sales order code with parent
-                        for (SalesOrderDetail sod : temp) {
-                            if (sod.getSoCode() != null && sod.getSoCode().equals(salesOrder.getCode()))
-                                salesOrderDetails.add(sod);
-                        }
+                        List<SalesOrderDetail> salesOrderDetails = x.getData();
                         mRecyclerView.setAdapter(new PurchaseDetailAdapter(salesOrderDetails));
+                        showLoading(false);
+                    } else {
+                        loadingText.setText("tidak dapat mengambail detail produk");
                     }
                 }
             }

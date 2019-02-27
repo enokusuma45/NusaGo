@@ -26,7 +26,7 @@
             android:maxLength="100"
             android:text="100"
             android:textColor="#BFC5CA"
-            android:layout_marginRight="80dp"
+            android:layout_marginRight="60dp"
             android:layout_alignParentRight="true"
             android:textSize="12sp"/>
 

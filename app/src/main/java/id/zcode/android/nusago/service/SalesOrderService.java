@@ -8,8 +8,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-import java.util.List;
-
 public interface SalesOrderService {
     @GET(".")
     Call<Pageable<SalesOrder>> get(@Query("page") int page, @Query("size") int size);
@@ -22,9 +20,7 @@ public interface SalesOrderService {
                                      @Query("size") int size);
 
     @GET("view/bydate/dettransaksi/")
-    Call<Container2<SalesOrderDetail>> getDetail(@Query("idmember") String memberId,
-                                                      @Query("date") String startDate,
-                                                      @Query("date2") String endDate,
-                                                      @Query("page") int page,
-                                                      @Query("size") int size);
+    Call<Container2<SalesOrderDetail>> getDetail(@Query("idtransaksi") String transactionId,
+                                                 @Query("page") int page,
+                                                 @Query("size") int size);
 }

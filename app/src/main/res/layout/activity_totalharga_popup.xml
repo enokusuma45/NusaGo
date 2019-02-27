@@ -104,34 +104,35 @@
             android:layout_marginTop="1sp"
             android:background="#FFE8E9EA"/>
 
+    <TextView
+            android:id="@+id/loadingProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:textColor="#BFC5CA"
+            android:text="Loading..."
+    />
+    <ScrollView
+            android:id="@+id/scrollViewProducts"
+            android:layout_width="350dp"
+            android:layout_height="270dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:minHeight="270dp"
+            android:padding="14dp"
+            android:background="#f4f4f4">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:orientation="vertical"
-                    android:layout_height="200dp"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="fill_parent">
-
-        <ScrollView
-                android:id="@+id/ScrollView01"
-                android:layout_height="300dp"
-                android:padding="14dp"
-                android:layout_marginBottom="30dp"
-                android:background="#f4f4f4"
-                android:layout_width="350dp">
-
-            <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvProducts"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="1dp"
-                    android:paddingRight="8dp"/>
-        </ScrollView>
-
-    </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvProducts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="8dp"
+                android:paddingTop="1dp"
+                android:paddingRight="8dp"/>
+    </ScrollView>
 
     <LinearLayout
+            android:id="@+id/totalPriceContainer"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginBottom="20dp"
