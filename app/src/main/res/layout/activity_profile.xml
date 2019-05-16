@@ -188,18 +188,30 @@
 
 
         <Button
+                android:id="@+id/btn_pin"
                 android:layout_width="250dp"
                 android:layout_height="55dp"
                 android:background="@drawable/btn_nusago"
-                android:text="Logout"
+                android:text="Lihat PIN"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="420dp"
                 android:layout_marginLeft="45dp"
                 android:layout_marginRight="45dp"
                 android:textAllCaps="false"
-                android:onClick="logout"
+                android:onClick="createPin"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="#3fa3f2"
+                android:text="Logout"
+                android:onClick="logout"
+                android:layout_below="@id/btn_pin"
+        />
 
 
     </RelativeLayout>

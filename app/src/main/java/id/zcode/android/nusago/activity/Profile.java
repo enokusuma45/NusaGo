@@ -46,4 +46,8 @@ public class Profile extends AppCompatActivity {
         startActivity(new Intent(this, Register.class));
         finish();
     }
+
+    public void createPin(View view) {
+        startActivity(new Intent(this, BuatPin.class));
+    }
 }
